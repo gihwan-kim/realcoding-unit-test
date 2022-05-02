@@ -20,7 +20,7 @@ class Calculator {
 
     divide = (a, b) => {
         if (b === 0) {
-            throw new DivideZeroError
+            throw new DivideZeroError();
         }
         return a / b;
     }
