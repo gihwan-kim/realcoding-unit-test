@@ -1,4 +1,4 @@
-import Calculator from "../js/calculator/Calculator";
+import Calculator from "../../js/calculator/Calculator";
 
 beforeAll(() => {
     console.log("모든 테스트를 실행하기 전 한번만 실행된다.")
