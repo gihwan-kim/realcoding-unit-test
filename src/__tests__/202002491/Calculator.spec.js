@@ -37,3 +37,24 @@ beforeEach(() => {
 beforeEach(() => {
     console.log("각 테스트가 완료된 후 실행된다.");
 });
+
+describe("가상 함수 테스트해보기", () => {
+  test("customCalculation는 전달된 함수를 호출시킨다.", () => {
+    const calculator = new Calculator();
+    const mockFn = jest.fn();
+    calculator.customCalculation(mockFn);
+    expect(mockFn).toHaveBeenCalled();
+  });
+  test("customCalculation에 함수와 1, 2, 3인자를 전달하면, 전달된 함수가 인자 1, 2, 3을 받아 호출한다.", () => {
+    const calculator = new Calculator();
+    const mockFn = jest.fn();
+    calculator.customCalculation(mockFn, 1, 2, 3);
+    expect(mockFn).toHaveBeenCalledWith(1, 2, 3);
+  });
+  test("abs함수는 Math.abs를 호출한다.", () => {
+    const calculator = new Calculator();
+    const mockFn = jest.spyOn(Math, "abs");
+    calculator.abs(3);
+    expect(mockFn).toHaveBeenCalled();
+  });
+});
