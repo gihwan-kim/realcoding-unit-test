@@ -43,6 +43,7 @@ beforeEach(() => {
 
 
 // extra hw
+// week 11 [homework 01]
 describe("가상 함수 테스트해보기", () => {
     function increment(... args) {
         var ret = 0;
@@ -52,28 +53,25 @@ describe("가상 함수 테스트해보기", () => {
         return ret;
     }
     test("customCalculation는 전달 된 함수를 호출시킨다.", () => {
+        const calculator = new Calculator();
         const mockFn = jest.fn();
         mockFn.mockImplementation(increment);
-        mockFn(1,2,3)
-        // Ensures that a mock function is called.
+        calculator.customCalculation(mockFn, 1, 2, 3);
         expect(mockFn).toHaveBeenCalled();
     });
     test("customCalculation에 함수와 1, 2, 3인자를 전달하면, 전달 된 함수가 인자 1, 2, 3을 받아 호출한다.", () => {
+        const calculator = new Calculator();
         const mockFn = jest.fn();
         mockFn.mockImplementation(increment);
-        mockFn(1,2,3)
-        // Ensures that a mock function is called.
+        calculator.customCalculation(mockFn, 1, 2, 3)
         expect(mockFn).toHaveBeenCalledWith(1, 2, 3);
     });
     test("abs함수는 Math.abs를 호출한다.", () => {
         const calculator = new Calculator();
-
-        // Creates a mock function similar to jest.
-        // fn but also tracks calls to object[methodName]
         const spyon = jest.spyOn(Math, "abs")
 
+        // calculator 내부에서 Mat.abs 가 호출됨
         calculator.abs(-10)
-        // Ensures that a mock function is called.
         expect(spyon).toHaveBeenCalled();
     });
 });
